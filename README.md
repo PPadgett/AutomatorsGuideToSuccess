@@ -53,7 +53,7 @@ _______
 - ### [**Strong Typing**](./TheEvolutionOfBugs/Strong-Typing.md): Use strong typing to catch potential errors at compile time. This can avoid potential runtime errors and make the code easier to understand.
   > [*Example code snippet in 'Python'*](./TheEvolutionOfBugs/Strong-Typing.md#example-without-strong-typing-type-hints-in-python), [*'PowerShell'*](./TheEvolutionOfBugs/Strong-Typing.md#example-without-strong-typing-type-hints-in-python), [*'Bash'*](./TheEvolutionOfBugs/Strong-Typing.md#example-without-strong-typing-simulated-in-bash), [*'Terraform'*](./TheEvolutionOfBugs/Strong-Typing.md#example-without-strong-typing-context-in-terraform)
 
- - ### [**Ternary Operators**](./TheEvolutionOfBugs/TernaryOperators.md): Use ternary operators instead of if-else statements for simpler conditions to increase code readability.
+ - ### [**Ternary Operators**](./TheEvolutionOfBugs/Ternary-Operators.md): Use ternary operators instead of if-else statements for simpler conditions to increase code readability.
     > [*Example code snippet in 'Python'*](./TheEvolutionOfBugs/Ternary-Operators.md#example-without-ternary-operator-in-python), [*'PowerShell'*](./TheEvolutionOfBugs/Ternary-Operators.md#example-without-ternary-operator-in-powershell), [*'Bash'*](./TheEvolutionOfBugs/Ternary-Operators.md#example-without-ternary-operator-in-bash)
 
 
