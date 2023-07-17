@@ -21,7 +21,7 @@
 - ### [**Parameters Passing**](./AutomationParadox/Parameter-Passing.md): All scripts and/or functions should define parameters to pass inputs. This promotes flexibility and reusability of functions and scripts.
   > [*Example code snippet in 'Python'*](./AutomationParadox/Parameter-Passing.md#example-without-parameter-passing-in-python), [*'PowerShell'*](./AutomationParadox/Parameter-Passing.md#example-without-parameter-passing-in-powershell), [*'Bash'*](./AutomationParadox/Parameter-Passing.md#example-without-parameter-passing-in-bash)  
 
-- ### [**Retuning Value**](./AutomationParadox/Returning-Value.md): Verbose Names for variables, functions, and classes should reflect their purpose or behavior. Consistency in naming across the codebase also aids in comprehensibility and maintenance.
+- ### [**Retuning Value**](./AutomationParadox/Returning-Value.md): All scripts and/or Functions should always return data or the result of the action it is performing. This improves the testability of the code and allows the results of functions to be used elsewhere in the script.
   > [*Example code snippet in 'Python'*](./AutomationParadox/Returning-Value.md#example-without-returning-value-in-python), [*'PowerShell'*](./AutomationParadox/Returning-Value.md#example-without-using-return-value-in-powershell), [*'Bash'*](./AutomationParadox/Returning-Value.md#example-without-using-return-values-in-bash)
 
 - ### [**Inline-Comments**](./AutomationParadox/Inline-Comments.md): Inline Comments: Developers should add inline comments to complex code sections. This best practice makes the code easier to understand for others and for the future self.
