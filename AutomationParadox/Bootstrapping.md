@@ -225,33 +225,32 @@ Python packages can be installed using pip, which is a package manager for Pytho
     ```bash
     #!/bin/bash
 
+    # Variables
+    CONTROL_NODE_USER="ansible"
+    CONTROL_NODE_IP="control_node_ip"
+    SERVER_USER="ubuntu"
+    SERVER_IP="new_server_ip"
+    INVENTORY_FILE="/home/$CONTROL_NODE_USER/inventory.ini"
+    PLAYBOOK_URL="http://fileserver.com/path/to/your/playbook.yml"
+
     # Update the system
     sudo apt update
     sudo apt upgrade -y
 
-    #Install Ansible
-    sudo apt install ansible -y
+    # Install Python
+    sudo apt install python3 -y
 
-    # Create a temporary directory
-    mkdir ~/ansible_bootstrap
-    cd ~/ansible_bootstrap
+    # Add the control node's public SSH key to the authorized keys
+    echo "ssh_public_key" >> ~/.ssh/authorized_keys
 
-    echo "[servers]" > inventory
-    echo "newly_built_server ansible_host=<IP_ADDRESS> ansible_user=<SSH_USERNAME> ansible_ssh_private_key_file=<PRIVATE_KEY_PATH>" >> inventory
+    # SSH into the control node and add the new server to the Ansible inventory
+    ssh -o StrictHostKeyChecking=no $CONTROL_NODE_USER@$CONTROL_NODE_IP "echo -e '[servers]\nnew_server ansible_host=$SERVER_IP ansible_user=$SERVER_USER' >> $INVENTORY_FILE"
 
-    # Define the URL of the playbook file
-    PLAYBOOK_URL="http://fileserver.com/path/to/your/playbook.yml"
-
-    # Download the playbook file
-    wget ${PLAYBOOK_URL} -O playbook.yml
-
-    # Execute the Ansible playbook
-    ansible-playbook -i ./inventory ./playbook.yml
-
-    # Cleanup
-    cd ~
-    rm -rf ~/ansible_bootstrap
+    # SSH into the control node and run the Ansible playbook
+    ssh -o StrictHostKeyChecking=no $CONTROL_NODE_USER@$CONTROL_NODE_IP "ansible-playbook -i $INVENTORY_FILE $PLAYBOOK_URL"
     ```
+
+    In this script, replace `control_node_ip`, `new_server_ip`, and `ssh_public_key` with the actual IP address of the control node, the new server, and the public SSH key from the control node, respectively.
 
     You can run this bootstrap script by `curl` to `bootstrap.sh` and executing it in bash:
 
@@ -259,7 +258,7 @@ Python packages can be installed using pip, which is a package manager for Pytho
     curl -sS http://your_local_centos_package_manager_url/bootstrap.sh | bash
     ```
 
-    This script will automatically perform all the steps mentioned in the manual process.
+    This script will automatically perform all the necessary steps to set up the new server to be managed by the Ansible control node.
 
     Remember to replace `"http://fileserver.com/path/to/your/playbook.yml"` with the actual URL of your playbook file.
 
